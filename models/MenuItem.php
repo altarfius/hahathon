@@ -21,6 +21,7 @@ class MenuItem extends ActiveRecord
             'price' => 'Цена',
             'weight' => 'Вес',
             'compositionItems' => 'Состав',
+            'category' => 'Категория',
         ];
     }
 
@@ -28,6 +29,11 @@ class MenuItem extends ActiveRecord
     {
         return $this->hasMany(CompositionItem::className(), ['id' => 'composition_item_id'])
             ->viaTable('menu_item_composition_item', ['menu_item_id' => 'id']);
+    }
+
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
     public function getCompositionString() {

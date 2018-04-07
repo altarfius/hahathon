@@ -19,13 +19,20 @@ class Category extends ActiveRecord
             'id' => 'Идентификатор',
             'name' => 'Наименование категории',
             'image' => 'Картинка',
-            'color' => 'Цвет',
-            'weight' => '',
-            'compositionItems' => 'Состав',
         ];
     }
 
     public function getUrl() {
         return Url::to(['category/view', 'id' => $this->id]);
+    }
+
+    public function getMenuItems()
+    {
+        return $this->hasMany(MenuItem::className(), ['category_id' => 'id']);
+    }
+
+    public function getMenuItemsCount()
+    {
+        return $this->getMenuItems()->count();
     }
 }

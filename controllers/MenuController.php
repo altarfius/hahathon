@@ -22,4 +22,10 @@ class MenuController extends Controller
             ]),
         ]);
     }
+
+    public function actionView($id) {
+        return $this->render('view', [
+            'menuItem' => MenuItem::findOne($id),
+        ]);
+    }
 }

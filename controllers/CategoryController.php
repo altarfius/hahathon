@@ -19,4 +19,10 @@ class CategoryController extends Controller
             'categories' => Category::find()->all(),
         ]);
     }
+
+    public function actionView($id) {
+        return $this->render('view', [
+            'category' => Category::findOne($id),
+        ]);
+    }
 }
