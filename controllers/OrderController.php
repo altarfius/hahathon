@@ -13,6 +13,7 @@ use app\models\MenuItem;
 use app\models\OrderMenuItem;
 use Yii;
 use app\models\Order;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 
 class OrderController extends Controller
@@ -43,7 +44,7 @@ class OrderController extends Controller
         $orderMenuItem = OrderMenuItem::find()->andWhere([
             'order_id' => $orderId,
             'menu_item_id' => $menuItemId,
-        ]);
+        ])->one();
 
         if ($orderMenuItem == null) {
             $order = Order::findOne($orderId);
@@ -62,7 +63,7 @@ class OrderController extends Controller
             $orderMenuItem->updateCounters(['count' => 1]);
         }
 
-        return $this->renderAjax('order', [
+        return $this->renderAjax('view', [
             'order' => $orderMenuItem->order,
         ]);
     }
@@ -71,14 +72,14 @@ class OrderController extends Controller
         $orderMenuItem = OrderMenuItem::find()->andWhere([
             'order_id' => Yii::$app->request->post('orderId'),
             'menu_item_id' => Yii::$app->request->post('menuItemId'),
-        ]);
+        ])->one();
 
         $orderMenuItem->updateCounters(['count' => -1]);
         if ($orderMenuItem->count >= 0) {
             $orderMenuItem->delete();
         }
 
-        return $this->renderAjax('order', [
+        return $this->renderAjax('view', [
             'order' => $orderMenuItem->order,
         ]);
     }

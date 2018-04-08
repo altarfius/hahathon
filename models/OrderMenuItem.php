@@ -15,7 +15,7 @@ class OrderMenuItem extends ActiveRecord
 {
     public function getOrder()
     {
-        return $this->hasOne(Order::className(), ['order_id' => 'id']);
+        return $this->hasOne(Order::className(), ['id' => 'order_id']);
     }
 
     public function getMenuItem()
