@@ -9,7 +9,8 @@ $this->params['order'] = $order;
 </div>
 <div class="position-list">
     <div class="card">
-        <?php foreach ($order->orderMenuItems as $orderMenuItem): ?>
+        <?php if (isset($order->orderMenuItems)) {
+        foreach ($order->orderMenuItems as $orderMenuItem): ?>
             <div class="position-item">
                 <div class="card-content">
                     <div class="position-title"><?= $orderMenuItem->menuItem->name ?></div>
@@ -21,17 +22,7 @@ $this->params['order'] = $order;
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
+        <?php endforeach; } ?>
     </div>
 </div>
 <a class="waves-effect waves-light btn-large green darken-1" id="to-order" href="<?= Url::to(['order/complete']) ?>">Заказать</a>
-<?php
-/*
-echo $order->id . '<br>';
-
-foreach ($order->orderMenuItems as $orderMenuItem) {
-    echo $orderMenuItem->menuItem->name . ' ' . $orderMenuItem->count . ' ' . $orderMenuItem->fullPrice . '<br>';
-}
-
-echo $order->cost . '<br>';
-*/?>

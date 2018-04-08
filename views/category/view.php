@@ -24,7 +24,7 @@ $this->params['category'] = $category;
         </div>
     <?php endforeach; ?>
 </div>
-<?php/*
+<?php /*
 
 echo $category->name . "<br>";
 echo $category->image . "<br>";

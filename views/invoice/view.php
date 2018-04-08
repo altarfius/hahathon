@@ -11,7 +11,7 @@ use yii\helpers\Url;
 <div class="position-list">
     <div class="card">
         <div class="position-item">
-            <div class="card-content">Итого: 
+            <div class="card-content"><b>Итого: </b>
                 <?= $order->costFormatted ?>
             </div>
         </div>
