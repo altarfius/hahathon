@@ -34,8 +34,10 @@ class CategoryController extends Controller
     }
 
     public function actionView($id) {
+        $this->layout = 'category';
         return $this->render('view', [
             'category' => Category::findOne($id),
+            'categories' => Category::find()->all(),
             'order' => Order::findOne(Yii::$app->session->get('orderId')),
         ]);
     }
