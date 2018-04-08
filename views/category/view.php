@@ -21,7 +21,11 @@ $this->params['category'] = $category;
                     <span class="material-icons">star_border</span>
                     <a href="!#">32 отзыва</a>
                 </div>
-                <button class="product-to-cart btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></button>
+                <button class="product-to-cart btn-floating btn-large waves-effect waves-light red"
+                        data-order-id="<?= Yii::$app->session->get('orderId'); ?>"
+                        data-item-id="<?= $item->id; ?>">
+                    <i class="material-icons">add</i>
+                </button>
             </div>
         </div>
     <?php endforeach; ?>
