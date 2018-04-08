@@ -7,10 +7,10 @@ $this->params['order'] = $order;
 <div class="card-panel blue-grey darken-3 for-cart"><i class="material-icons white-text">contacts</i>
     <h5 class="white-text">Стол 12</h5>
 </div>
+<?php if (isset($order->orderMenuItems)) { ?>
 <div class="position-list">
     <div class="card">
-        <?php if (isset($order->orderMenuItems)) {
-        foreach ($order->orderMenuItems as $orderMenuItem): ?>
+        <?php foreach ($order->orderMenuItems as $orderMenuItem): ?>
             <div class="position-item">
                 <div class="card-content">
                     <div class="position-title"><?= $orderMenuItem->menuItem->name ?></div>
@@ -22,7 +22,8 @@ $this->params['order'] = $order;
                     </div>
                 </div>
             </div>
-        <?php endforeach; } ?>
+        <?php endforeach; ?>
     </div>
 </div>
 <a class="waves-effect waves-light btn-large green darken-1" id="to-order" href="<?= Url::to(['order/complete']) ?>">Заказать</a>
+<?php } ?>

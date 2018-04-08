@@ -7,7 +7,9 @@ $this->params['category'] = $category;
 <div class="products-list">
     <?php foreach($category->menuItems as $item): ?>
         <div class="products-list-item">
-            <div class="product__img"><img src="<?= !empty($item->image) ? $item->image : 'http://placehold.it/200x200'; ?>"></div>
+            <div class="product__img">
+            <?= \yii\helpers\Html::img('menu/' . $item->image) ?>
+            </div>
             <div class="product__info">
                 <div class="product__title"><?=$item->name; ?></div>
                 <div class="product__composition"><?=$item->compositionString; ?></div>
@@ -24,23 +26,3 @@ $this->params['category'] = $category;
         </div>
     <?php endforeach; ?>
 </div>
-<?php /*
-
-echo $category->name . "<br>";
-echo $category->image . "<br>";
-echo $category->menuItemsCount . "<br>";
-
-foreach ($category->menuItems as $item) {
-    echo $item->name . "<br>";
-    echo $item->compositionString . "<br>";
-    echo $item->description . "<br>";
-    echo $item->image . "<br>";
-    echo $item->price . "<br>";
-    echo $item->weight . "<br>";
-    echo $item->category->name . "<br>";
-}
-*/
-
-//Список категорий
-//Заказ активный текущий
-    ?>

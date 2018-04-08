@@ -23,7 +23,9 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <div class="mini-menu row white">
     <div class="col s9">
-        <?php foreach ($this->params['categories'] as $cat): ?>
+        <?php for ($i = 0; $i < 8; $i++):
+            $cat = $this->params['categories'][$i];
+            ?>
             <a href="<?= $cat->url; ?>" class="mini-menu__item"  style="background-color: <?= '#'. $cat->color; ?>">
                 <div class="menu-item__icon">
                     <svg id="Layer_1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -35,7 +37,7 @@ AppAsset::register($this);
                 </div>
                 <div class="menu-item__count"><?= $cat->menuItemsCount; ?></div>
             </a>
-        <?php endforeach; ?>
+        <?php endfor; ?>
     </div>
     <div class="col s3"></div>
 </div>
