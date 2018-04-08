@@ -46,6 +46,8 @@ class OrderController extends Controller
             'menu_item_id' => $menuItemId,
         ])->one();
 
+//        return VarDumper::dump($orderMenuItem, 100, 1); die;
+
         if ($orderMenuItem == null) {
             $order = Order::findOne($orderId);
             if ($order == null) {
