@@ -26,6 +26,7 @@ class OrderController extends Controller
         $order = new Order;
 
         if ($order->load(Yii::$app->request->post()) && $order->save()) {
+            Yii::$app->session->set('orderId', $order->id);
             return $this->redirect(['view', 'id' => $order->id]);
         } else {
             return $this->render('create', [

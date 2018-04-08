@@ -1,4 +1,6 @@
 <?php
+$this->params['order'] = $order;
+
 
 echo $category->name . "<br>";
 echo $category->image . "<br>";

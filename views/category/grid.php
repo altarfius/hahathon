@@ -1,3 +1,6 @@
+<?php
+    $this->params['order'] = $order;
+?>
 <div class="row menu-list">
     <?php foreach ($categories as $category): ?>
         <div class="col s3" style="background-color: <?= '#'. $category->color; ?>">

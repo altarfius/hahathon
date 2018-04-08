@@ -8,6 +8,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\db\ActiveRecord;
 
 class OrderMenuItem extends ActiveRecord
@@ -24,5 +25,9 @@ class OrderMenuItem extends ActiveRecord
 
     public function getFullPrice() {
         return $this->count * $this->menuItem->price;
+    }
+
+    public function getFullPriceFormatted() {
+        return Yii::$app->formatter->asCurrency($this->fullPrice);
     }
 }

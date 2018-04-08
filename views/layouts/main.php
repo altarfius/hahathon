@@ -3,11 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -31,7 +27,7 @@ AppAsset::register($this);
     </div>
     <div class="col s3">
         <?= $this->render('/order/view',[
-                'order' => new \app\models\Order(),
+            'order' => $this->params['order'],
         ]); ?>
     </div>
 </div>

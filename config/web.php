@@ -53,6 +53,20 @@ $config = [
             ],
         ],
         */
+        'formatter' => [
+            'dateFormat' => 'dd.MM.yyyy',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'RUR',
+            'numberFormatterOptions' => [
+                NumberFormatter::FRACTION_DIGITS => 0,
+                NumberFormatter::MIN_FRACTION_DIGITS => 0,
+                NumberFormatter::MAX_FRACTION_DIGITS => 0,
+            ],
+            'numberFormatterSymbols' => [
+                NumberFormatter::CURRENCY_SYMBOL => '₽',
+            ]
+        ],
     ],
     'params' => $params,
 ];
