@@ -8,6 +8,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\db\ActiveRecord;
 
 class Order extends ActiveRecord
@@ -21,5 +22,9 @@ class Order extends ActiveRecord
     {
         return $this->hasMany(MenuItem::className(), ['id' => 'menu_item_id'])
             ->via('orderMenuItems');
+    }
+
+    public function getCostFormatted() {
+        return Yii::$app->formatter->asCurrency($this->cost);
     }
 }

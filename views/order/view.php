@@ -1,4 +1,7 @@
 <?php
+
+use yii\helpers\Url;
+
 $this->params['order'] = $order;
 ?>
 <div class="card-panel blue-grey darken-3 for-cart"><i class="material-icons white-text">contacts</i>
@@ -21,7 +24,7 @@ $this->params['order'] = $order;
         <?php endforeach; ?>
     </div>
 </div>
-<a class="waves-effect waves-light btn-large green darken-1" id="to-order" href="!#">Заказать</a>
+<a class="waves-effect waves-light btn-large green darken-1" id="to-order" href="<?= Url::to(['order/complete']) ?>">Заказать</a>
 <?php
 /*
 echo $order->id . '<br>';

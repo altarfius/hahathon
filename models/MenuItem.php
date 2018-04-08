@@ -8,6 +8,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\db\ActiveRecord;
 
 class MenuItem extends ActiveRecord
@@ -42,5 +43,9 @@ class MenuItem extends ActiveRecord
         }, $this->compositionItems);
 
         return implode(', ', $items);
+    }
+
+    public function getPriceFormatted() {
+        return Yii::$app->formatter->asCurrency($this->price);
     }
 }

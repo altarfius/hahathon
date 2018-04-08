@@ -8,6 +8,7 @@
 
 namespace app\controllers;
 
+use app\models\Invoice;
 use app\models\MenuItem;
 use app\models\OrderMenuItem;
 use Yii;
@@ -82,15 +83,34 @@ class OrderController extends Controller
         ]);
     }
 
-    public function actionComplete($id) {
-        $order = Order::findOne($id);
+    public function actionConfirm() {
+        $this->layout = 'confirm';
+
+        $order = Order::findOne(Yii::$app->session->get('orderId'));
+
+        return $this->render('confirm', [
+            'order' => $order,
+            'invoice' => new Invoice,
+        ]);
+    }
+
+    public function actionComplete() {
+        $order = Order::findOne(Yii::$app->session->get('orderId'));
+        foreach ($order->orderMenuItems as $orderMenuItem) {
+
+        }
+
+        $order->cost = array_reduce($order->orderMenuItems, function($cost, $orderMenuItem) {
+            $cost += $orderMenuItem->fullPrice;
+            return $cost;
+        }, 0);
 
         $order->complete = 1;
 
-        $order->save();
-
-        return $this->render('order', [
-            'order' => $order,
-        ]);
+        if ($order->save()) {
+            return $this->redirect(['confirm']);
+        } else {
+            return $this->redirect(Yii::$app->request->referrer);
+        }
     }
 }
